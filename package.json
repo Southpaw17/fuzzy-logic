@@ -1,0 +1,37 @@
+{
+  "name": "fuzzy-logic",
+  "version": "0.0.0-development",
+  "description": "A Fuzzy Logic engine for Node and the Browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "commit": "git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Southpaw17/fuzzy-logic.git"
+  },
+  "keywords": [
+    "fuzzy",
+    "logic",
+    "ai",
+    "fuzzylogic"
+  ],
+  "author": "Frank Bruzzese",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Southpaw17/fuzzy-logic/issues"
+  },
+  "homepage": "https://github.com/Southpaw17/fuzzy-logic#readme",
+  "devDependencies": {
+    "commitizen": "^2.9.3",
+    "cz-conventional-changelog": "^1.2.0",
+    "semantic-release": "^6.3.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
