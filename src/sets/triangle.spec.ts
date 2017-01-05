@@ -21,8 +21,12 @@ describe('Triangle', () => {
       expect(tri.calculateDOM(21)).to.equal(0);
     });
 
-    it('should work', () => {
+    it('should return .5 when value is halfway between left and peak', () => {
       expect(tri.calculateDOM(5)).to.equal(.5);
+    });
+
+    it('should return .5 when value is halfway between peak and right', () => {
+      expect(tri.calculateDOM(15)).to.equal(.5);
     });
   });
 });
