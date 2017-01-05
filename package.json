@@ -4,9 +4,43 @@
   "description": "A Fuzzy Logic engine for Node and the Browser",
   "main": "index.js",
   "scripts": {
-    "test": "exit 0",
+    "test": "nyc --require ts-node/register mocha",
+    "test:watch": "npm t -- -w",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "pre-commit": "npm t && npm run check-coverage"
+    }
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "exclude": [
+      "node_modules/",
+      "dist/"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "lcov",
+      "json"
+    ],
+    "sourceMap": true,
+    "instrument": true
   },
   "repository": {
     "type": "git",
@@ -18,20 +52,20 @@
     "ai",
     "fuzzylogic"
   ],
-  "author": "Frank Bruzzese",
+  "author": "Frank Bruzzese(bruzzese.frank@gmail.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Southpaw17/fuzzy-logic/issues"
   },
   "homepage": "https://github.com/Southpaw17/fuzzy-logic#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
     "commitizen": "^2.9.3",
     "cz-conventional-changelog": "^1.2.0",
-    "semantic-release": "^6.3.2"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "nyc": "^10.0.0",
+    "semantic-release": "^6.3.2",
+    "typescript": "^2.1.4"
   }
 }
