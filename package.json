@@ -4,18 +4,16 @@
   "description": "A Fuzzy Logic engine for Node and the Browser",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --require ts-node/register mocha",
-    "test:watch": "npm t -- -w",
+    "test": "nyc mocha",
+    "watch:test": "npm t -- -w",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "commit": "git-cz",
-    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100"
+    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "precommit": "npm t && npm run check-coverage"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    },
-    "ghooks": {
-      "pre-commit": "npm t && npm run check-coverage"
     }
   },
   "nyc": {
@@ -26,7 +24,8 @@
     "exclude": [
       "node_modules/",
       "dist/",
-      "src/**/*.spec.ts"
+      "src/**/*.spec.ts",
+      "src/**/*.js"
     ],
     "extension": [
       ".ts",
@@ -63,6 +62,7 @@
     "chai": "^3.5.0",
     "commitizen": "^2.9.3",
     "cz-conventional-changelog": "^1.2.0",
+    "husky": "^0.12.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "nyc": "^10.0.0",
