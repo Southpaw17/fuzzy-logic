@@ -1,6 +1,6 @@
 import { FuzzySet } from './fuzzy.set'
 
-export class Triangle implements FuzzySet {
+export class RightShoulder implements FuzzySet {
   left: number;
   peak: number;
   right: number;
@@ -11,20 +11,13 @@ export class Triangle implements FuzzySet {
   }
 
   calculateDOM(value: number) {
-    if(value == this.peak) {
+    if(value >= this.peak && value <= this.right) {
       return 1;
     }
 
     if (value < this.peak && value > this.left) {
       let diff = this.peak - this.left;
       let val_diff = value - this.left;
-
-      return val_diff / diff;
-    }
-
-    if (value > this.peak && value < this.right) {
-      let diff = this.right - this.peak;
-      let val_diff = this.right - value;
 
       return val_diff / diff;
     }
